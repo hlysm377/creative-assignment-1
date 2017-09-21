@@ -1,6 +1,58 @@
 <html>
-<head>
-</head>
-<body>
-</body>
+  <head>
+    <title>Lab 1</title>
+    <link rel="stylesheet" href="lab1.css">
+    <link rel="java" href="lab1.js">
+  </head>
+  <body>
+    <header><strong>Sketch Pad</strong></header>
+    <div id="canvas_container">
+      <canvas id="canvas" width="700" height="500"></canvas>
+      </div>
+      <!--<img src="connect_apple.png">-->
+        <div class="button_c">
+        <button onclick="clearPaint()">Clear</button>
+        </div>
+        <footer>
+          <strong> NOTE: </strong>Just click once and start to draw. Click again when you are done.
+        </footer>
+        
+        <script>
+          var canvas = document.getElementById('canvas');
+          var context = canvas.getContext('2d');
+          var second;
+          var isDrawing;
+          var rect = canvas.getBoundingClientRect();
+          
+          context.lineWidth = 5;
+          context.lineJoin = context.lineCap = 'round';
+          context.fillStyle = "red";
+          context.strokeStyle = "#4e42f4";
+      
+          canvas.onmousedown = function(event) {
+            isDrawing = true;
+            context.moveTo(event.clientX - rect.left, event.clientY - rect.top);
+          }
+          canvas.onmousemove = function(event) {
+            if (isDrawing) {
+              //context.beginPath();
+              context.lineTo(event.clientX -rect.left, event.clientY - rect.top);
+              context.stroke();
+              }
+          }
+          canvas.onmouseup = function() {
+            if(second == true){
+            isDrawing = false;
+            second = false;
+            }
+            else{
+            second = true;
+            }
+          }
+          function clearPaint(){
+            window.location.reload();
+          }
+        </script>
+    </body>
 </html>
+
