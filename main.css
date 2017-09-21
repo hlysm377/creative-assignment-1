@@ -30,6 +30,9 @@ h1{
 .button_c{
   text-align:center;
 }
+#colors{
+  text-align: center;
+}
 button{
   background-color:#555555;
   color: white;
